@@ -26,4 +26,4 @@ def index():
 	return render_template("base.html", villages=villages, form=form)
 
 if __name__ == '__main__':
-	app.run()
+	app.run(host='0.0.0.0')
