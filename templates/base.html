@@ -27,15 +27,12 @@
           <div class="row justify-content-md-center">
             <form action="" method="post" novalidate>
               {{ form.hidden_tag() }}
-              <p>
-                {{ form.temperature.label }}<br>
-                ❄️{{ form.temperature(min=0.5, max=1.5, size=32) }}🔥
-              </p>
-              <p>
-                  {{ form.prefix.label }}<br>
-                  {{ form.prefix(size=32) }}
-              </p>
               <p>{{ form.submit() }}</p>
+              <p> Optional Extras:</p>
+              <p>{{ form.temperature.label }}
+                <br>❄️{{ form.temperature(min=0.5, max=1.5, size=32) }}🔥</p>
+              <p>{{ form.prefix.label }}
+                <br>{{ form.prefix(size=32) }}</p>
             </form>
 
           </div>

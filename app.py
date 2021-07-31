@@ -28,7 +28,10 @@ def index():
 		user_prefix = form.prefix.data.title()
 		user_temperature = float(form.temperature.data)
 		session['villages'].extend(
-			village_maker(textgen, temperature=user_temperature, prefix=user_prefix))
+			village_maker(textgen, 
+				temperature=user_temperature, 
+				prefix=user_prefix)
+			)
 
 		return render_template("base.html", 
 			villages=session['villages'][::-1], #list in reverse order
