@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect
+from flask import Flask, render_template, url_for, redirect, session
 from forms import ParameterForm
 from waitress import serve
 from textgenrnn import textgenrnn
@@ -11,22 +11,32 @@ def village_maker(textgen, temperature=1.0, prefix=None):
 
 # Initialises 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'a random string'
-villages=[]	
+app.config['SECRET_KEY'] = 'a random string'	
 textgen = textgenrnn('villages_4e.hdf5') # imports weights
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
+	# Makes blank list of villages
+	if 'villages' in session:
+		session['villages'] = session.get('villages')
+	else:
+		session['villages'] = []
+
 	form = ParameterForm()
+
 	if form.validate_on_submit():
 		user_prefix = form.prefix.data.title()
 		user_temperature = float(form.temperature.data)
-		villages.extend(
+		session['villages'].extend(
 			village_maker(textgen, temperature=user_temperature, prefix=user_prefix))
-		#fun fact, you can't use += when using a function to add to a list from outside
-		#the function, you have use 'extend'
-		return render_template("base.html", villages=villages[::-1], form=form)
-	return render_template("base.html", villages=villages, form=form)
+
+		return render_template("base.html", 
+			villages=session['villages'][::-1], #list in reverse order
+			form=form)
+
+	return render_template("base.html", 
+		villages=session['villages'], 
+		form=form)
 
 if __name__ == '__main__':
 	serve(app, host='0.0.0.0', port=5000)
