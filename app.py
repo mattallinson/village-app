@@ -1,5 +1,4 @@
 from flask import Flask, render_template, url_for, redirect, session
-from flask_bootstrap import Bootstrap
 from waitress import serve
 
 from forms import ParameterForm
@@ -13,7 +12,6 @@ def village_maker(textgen, temperature=1.0, prefix=None):
 
 # Initialise app
 app = Flask(__name__)
-Bootstrap(app)
 app.config['SECRET_KEY'] = 'a random string'	
 
 # imports weights

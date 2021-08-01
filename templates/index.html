@@ -5,15 +5,21 @@
       <h1>AI Generated English Village Names</h1>
       <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
-        <p>
-          {{ form.temperature.label }}<br>
-          0.5 (not very random){{ form.temperature(min=0.5, max=1.5, size=32) }} 1.5 (rather random)
-        </p>
-        <p>
+        <p>{{ form.submit(class_="btn btn-primary") }}</p>
+        
+        <label for="myCheck">Extra options:</label> 
+        <input type="checkbox" id="myCheck" onclick="options()">
+        <div id="options" style="display:none">
+          <p>
+            {{ form.temperature.label }}<br>
+            ❄️{{ form.temperature(class_="form-range", min=0.4, max=1.6, step=0.2) }}🔥
+          </p>
+          <p>
             {{ form.prefix.label }}<br>
             {{ form.prefix(size=32) }}
-        </p>
-        <p>{{ form.submit() }}</p>
+          </p>
+        </div>
+        
       </form>
           <div>
             <ul>
@@ -23,5 +29,8 @@
             </ul>
           </div>
         </div>
+{% endblock %}
 
+{% block scripts %}
+<script src="static/options.js" type="text/javascript"></script>
 {% endblock %}
