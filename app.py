@@ -1,6 +1,8 @@
 from flask import Flask, render_template, url_for, redirect, session
-from forms import ParameterForm
+from flask_bootstrap import Bootstrap
 from waitress import serve
+
+from forms import ParameterForm
 from textgenrnn import textgenrnn
 
 
@@ -9,10 +11,13 @@ def village_maker(textgen, temperature=1.0, prefix=None):
 		return_as_list=True)
 	return villages
 
-# Initialises 
+# Initialise app
 app = Flask(__name__)
+Bootstrap(app)
 app.config['SECRET_KEY'] = 'a random string'	
-textgen = textgenrnn('villages_4e.hdf5') # imports weights
+
+# imports weights
+textgen = textgenrnn('villages_4e.hdf5') 
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
@@ -38,17 +43,17 @@ def index():
 				prefix=user_prefix)
 			)
 
-		return render_template("base.html", 
+		return render_template("index.html", 
 			villages=session['villages'][::-1], #list in reverse order
 			form=form)
 
-	return render_template("base.html", 
+	return render_template("index.html", 
 		villages=session['villages'], 
 		form=form)
 
 @app.route("/clear-list", methods=['GET', 'POST'])
 def clear_list():
-	session.remove('villages')
+	session.pop('villages')
 	return redirect(url_for('index'))
 
 if __name__ == '__main__':

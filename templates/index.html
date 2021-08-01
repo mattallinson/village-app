@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+      <div class="container">
+      <h1>AI Generated English Village Names</h1>
+      <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+          {{ form.temperature.label }}<br>
+          0.5 (not very random){{ form.temperature(min=0.5, max=1.5, size=32) }} 1.5 (rather random)
+        </p>
+        <p>
+            {{ form.prefix.label }}<br>
+            {{ form.prefix(size=32) }}
+        </p>
+        <p>{{ form.submit() }}</p>
+      </form>
+          <div>
+            <ul>
+              {% for village in villages %}
+              <li>{{ village}}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+{% endblock %}
