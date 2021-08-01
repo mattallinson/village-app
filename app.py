@@ -27,6 +27,11 @@ def index():
 	if form.validate_on_submit():
 		user_prefix = form.prefix.data.title()
 		user_temperature = float(form.temperature.data)
+		
+		'''code below makes 5 new village name and addes them to the
+		list of village names, which then gets passed to render_template
+		'''
+
 		session['villages'].extend(
 			village_maker(textgen, 
 				temperature=user_temperature, 
@@ -40,6 +45,11 @@ def index():
 	return render_template("base.html", 
 		villages=session['villages'], 
 		form=form)
+
+@app.route("/clear-list", methods=['GET', 'POST'])
+def clear_list():
+	session.remove('villages')
+	return redirect(url_for('index'))
 
 if __name__ == '__main__':
 	serve(app, host='0.0.0.0', port=5000)
