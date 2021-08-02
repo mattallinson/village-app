@@ -1,4 +1,4 @@
 __pycache__
 env
 .DS_Store
-templates/test.html
+templates/test_templates
