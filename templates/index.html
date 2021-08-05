@@ -1,34 +1,51 @@
 {% extends "base.html" %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+{% endblock %}
 
 {% block content %}
-      <div class="container">
-      <h1>AI Generated English Village Names</h1>
-      <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>{{ form.submit(class_="btn btn-primary") }}</p>
-        
-        <label for="myCheck">Extra options:</label> 
-        <input type="checkbox" id="myCheck" onclick="options()">
-        <div id="options" style="display:none">
-          <p>
-            {{ form.temperature.label }}<br>
-            ❄️{{ form.temperature(class_="form-range", min=0.4, max=1.6, step=0.2) }}🔥
-          </p>
-          <p>
-            {{ form.prefix.label }}<br>
-            {{ form.prefix(size=32) }}
-          </p>
+<h1 class="display-4">AI Generated English Village Names</h1>
+<p class="lead"> Some placeholder text describing the project</p>
+<form action="" method="post" novalidate>
+  {{ form.hidden_tag() }}
+  <p>{{ form.submit(class_="btn btn-primary") }}</p>
+  <div id="options" style="display:none">
+    <div class ="row">
+      <div class="col">
+        <div class="row">
+          {{ form.temperature.label }}
         </div>
-        
-      </form>
-          <div>
-            <ul>
-              {% for village in villages %}
-              <li>{{ village}}</li>
-              {% endfor %}
-            </ul>
-          </div>
+        <div class="row">
+          <div class="col text-end">❄️</div>
+          <div class="col-6">{{ form.temperature(class_="form-range", min=0.4, max=1.6, step=0.2) }}</div>
+          <div class="col">🔥</div>
         </div>
+      </div>
+      <div class="col">
+        <div class="row">
+          {{ form.prefix.label }}
+        </div>
+        <div class="row">
+          {{ form.prefix(placeholder="(Optional)") }}
+        </div>
+      </div>
+    </div>  
+  </div>
+  <label for="myCheck">Extra options:</label> 
+  <input type="checkbox" id="myCheck" onclick="options()">
+</form>
+<hr/>
+<div>
+  {% if villages|length >0: %}
+    <a href="/clear-list">Clear List</a>
+  {% endif %}  
+
+  <ul>
+    {% for village in villages %}
+    <li>{{ village}}</li>
+    {% endfor %}
+  </ul>
+</div>
 {% endblock %}
 
 {% block scripts %}
