@@ -1,7 +1,7 @@
-    h1, p, label {
-    	text-align: center;
-    }
+h1, p, label {
+	text-align: center;
+}
 
-    input#prefix {
-    	font-style: italic;
-    }
+input#prefix {
+	font-style: italic;
+}

@@ -1,9 +1,10 @@
+#!/usr/bin/python3
 from flask import Flask, render_template, url_for, redirect, session
 from waitress import serve
 
 from forms import ParameterForm
 from textgenrnn import textgenrnn
-
+import os
 
 def village_maker(textgen, temperature=1.0, prefix=None):
 	villages = textgen.generate(5, temperature=temperature, prefix=prefix, 
@@ -12,9 +13,9 @@ def village_maker(textgen, temperature=1.0, prefix=None):
 
 # Initialise app
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'a random string'	
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")	
 
-# imports weights
+# Imports weights
 textgen = textgenrnn('villages_4e.hdf5') 
 
 @app.route("/", methods=['GET', 'POST'])
