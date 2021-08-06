@@ -31,18 +31,23 @@
       </div>
     </div>  
   </div>
+
   <label for="myCheck">Extra options:</label> 
-  <input type="checkbox" id="myCheck" onclick="options()">
+  {% if extra_options_checked %}
+    {{ form.extra_options(id="myCheck", onclick="options()", **{checked:True}) }}
+  {% else %}
+    {{ form.extra_options(id="myCheck", onclick="options()") }}
+  {% endif  %}
 </form>
-<hr/>
+<hr/> 
 <div>
-  {% if villages|length >0: %}
-    <a href="/clear-list">Clear List</a>
+  {% if villages|length >10: %}
+    <p class="text-end"><a href="/clear-list" id="clear-list">Clear List</a></p>
   {% endif %}  
 
   <ul>
     {% for village in villages %}
-    <li>{{ village}}</li>
+    <li>{{ village }}</li>
     {% endfor %}
   </ul>
 </div>

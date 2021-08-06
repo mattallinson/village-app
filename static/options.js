@@ -7,3 +7,5 @@ function options() {
      options.style.display = "none";
   }
 }
+
+window.onload = options()

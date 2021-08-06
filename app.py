@@ -30,6 +30,7 @@ def index():
 	if form.validate_on_submit():
 		user_prefix = form.prefix.data.title()
 		user_temperature = float(form.temperature.data)
+		extra_options_checked = form.extra_options
 		
 		'''code below makes 5 new village name and addes them to the
 		list of village names, which then gets passed to render_template
@@ -43,11 +44,11 @@ def index():
 
 		return render_template("index.html", 
 			villages=session['villages'][::-1], #list in reverse order
-			form=form)
+			form=form, extra_options_checked=extra_options_checked)
 
 	return render_template("index.html", 
 		villages=session['villages'], 
-		form=form)
+		form=form, extra_options_checked=False)
 
 @app.route("/clear-list", methods=['GET', 'POST'])
 def clear_list():
