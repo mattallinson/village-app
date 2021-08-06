@@ -1,58 +1,5 @@
 {% extends "base.html" %}
-{% block style %}
-<link rel="stylesheet" type="text/css" href="/static/style.css">
-{% endblock %}
-
 {% block content %}
-<h1 class="display-4">AI Generated English Village Names</h1>
 <p class="lead"> Some placeholder text describing the project</p>
-<form action="" method="post" novalidate>
-  {{ form.hidden_tag() }}
-  <p>{{ form.submit(class_="btn btn-primary") }}</p>
-  <div id="options" style="display:none">
-    <div class ="row">
-      <div class="col">
-        <div class="row">
-          {{ form.temperature.label }}
-        </div>
-        <div class="row">
-          <div class="col text-end">❄️</div>
-          <div class="col-6">{{ form.temperature(class_="form-range", min=0.4, max=1.6, step=0.2) }}</div>
-          <div class="col">🔥</div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="row">
-          {{ form.prefix.label }}
-        </div>
-        <div class="row">
-          {{ form.prefix(placeholder="(Optional)") }}
-        </div>
-      </div>
-    </div>  
-  </div>
 
-  <label for="myCheck">Extra options:</label> 
-  {% if extra_options_checked %}
-    {{ form.extra_options(id="myCheck", onclick="options()", **{checked:True}) }}
-  {% else %}
-    {{ form.extra_options(id="myCheck", onclick="options()") }}
-  {% endif  %}
-</form>
-<hr/> 
-<div>
-  {% if villages|length >10: %}
-    <p class="text-end"><a href="/clear-list" id="clear-list">Clear List</a></p>
-  {% endif %}  
-
-  <ul>
-    {% for village in villages %}
-    <li>{{ village }}</li>
-    {% endfor %}
-  </ul>
-</div>
-{% endblock %}
-
-{% block scripts %}
-<script src="static/options.js" type="text/javascript"></script>
 {% endblock %}
