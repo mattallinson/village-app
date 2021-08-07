@@ -1,5 +1,6 @@
 __pycache__
 env
+.env
 .DS_Store
 templates/test_templates
 dummy.py
