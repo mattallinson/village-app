@@ -12,3 +12,11 @@ a.tt {
 	text-decoration: none;
 	border-bottom: 1px dotted darkgray;
 }
+
+h1.display-1{
+	font-family: 'Merriweather', serif;
+}
+
+h2.display-6{
+	font-family: 'Kaushan Script', cursive;
+}
