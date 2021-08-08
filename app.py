@@ -16,7 +16,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")	
 
 # Imports weights
-textgen = textgenrnn('villages_4e.hdf5') 
+textgen = textgenrnn('villages_2e_2021.hdf5') 
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
