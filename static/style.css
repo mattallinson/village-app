@@ -2,6 +2,12 @@ h1, p, label {
 	text-align: center;
 }
 
+p#output {
+	text-align: left;
+	display: flex;
+	justify-content: space-between;
+}
+
 input#prefix {
 	font-style: italic;
 }
