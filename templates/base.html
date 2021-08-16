@@ -20,7 +20,7 @@
     
   </head>
   <body>
-    <div class="container">
+    <div class="container px-1">
       <div class="row justify-content-md-center">
         <div class="col-md-8 text-center">
           <!-- central column with all the content-->
@@ -40,7 +40,7 @@
             
             <div id="options" style="display:none">
               <div class ="row">
-                <div class="col">
+                <div class="col-md-4">
                   <div class="row">
                     <p><a href="#" class="tt" data-bs-toggle="tooltip" title="" data-bs-original-title="How 'Random' the neural net will be">Temperature</a></p>
                   </div>
@@ -50,11 +50,11 @@
                     <div class="col">🔥</div>
                   </div>
                 </div>
-                <div class="col">
-                  <div class="row">
+                <div class="col-md-4">
+                  <div class="row px-5">
                     <p><a href="#" class="tt" data-bs-toggle="tooltip" title="" data-bs-original-title="You can choose the begining of the name">Prefix</a></p>
                   </div>
-                  <div class="row">
+                  <div class="row px-5">
                     {{ form.prefix(placeholder="(Optional)") }}
                   </div>
                 </div>
@@ -62,7 +62,7 @@
             </div>
           </form>
         </div>
-        <div class="col-4 pt-md-4">
+        <div class="col-md-4 pt-md-4">
           <div id="output">
             <span>Output:</span>
           </div>

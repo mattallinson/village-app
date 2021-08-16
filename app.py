@@ -13,7 +13,8 @@ def village_maker(textgen, temperature=1.0, prefix=None):
 
 # Initialise app
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")	
+with open('secretKey') as keyfile:
+	app.config['SECRET_KEY'] = keyfile.read()
 
 # Imports weights
 textgen = textgenrnn('villages_2e_2021.hdf5') 

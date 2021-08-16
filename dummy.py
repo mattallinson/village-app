@@ -10,7 +10,8 @@ from forms import ParameterForm
 
 # Initialise app
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'a random string'	
+with open('secretKey') as keyfile:
+	app.config['SECRET_KEY'] = keyfile.read()	
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
