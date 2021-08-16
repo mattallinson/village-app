@@ -1,8 +1,12 @@
+# File directory rubbish
 __pycache__
+.DS_Store
+# Virtual environments
 env
 venv
 .venv
 .env
-.DS_Store
+# Bootstrap practice stuff
 templates/test_templates
+# App needs a secretKey to run
 secretKey
