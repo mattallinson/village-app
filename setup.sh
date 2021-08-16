@@ -16,4 +16,8 @@ pip3 install flask_wtf
 
 # Creates Secret Key and stores it 
 echo $(openssl rand -base64 12) >> secretKey
+
+# Get ngenix installed
+apt-get install nginx
+
 echo "Good Luck!"
