@@ -65,20 +65,18 @@
           </form>
         </div>
         <div class="col-md-4 pt-md-4">
+          {% if villages|length > 0: %}   
           <div id="output">
-            <span>Output:</span>
-          </div>
-          
-          <ul>
-
-            {% if villages|length > 15: %}              
-              <a href="/clear-list" id="clear-list">Clear List</a>
-            {% endif %}
-            {% for village in villages %}
-            <li>{{ village }}</li>
-            {% endfor %}
+            <h4>Output:</h4>
+          </div>          
+          <ul>                   
+              {% for village in villages %}
+              <li>{{ village }}</li>
+              {% endfor %}
             <p id="output">...</p>
+          <a href="/clear-list" id="clear-list">Clear List</a>
           </ul>
+          {% endif %}
         </div>
       </div>
     </div>
